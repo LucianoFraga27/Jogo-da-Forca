@@ -2,12 +2,19 @@
 void limparTela() {
     system("cls");
 }
-void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes) {
+void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes,string letras_arriscadas) {
 
     cout << "Palavra: " << palavra_mascara << " \nTamanho: " << tamanho_palavra;
     cout << "\nTentativas restantes: " << tentativasRestantes;
 
-        }
+    cout << "\nLetras arriscadas: ";
+    for(int i = 0; i < letras_arriscadas.size();i++){
+    cout << letras_arriscadas[i] << ", ";
+    }
+
+    }
+
+
 string retornaPalavraAleatoria() {
 
     string palavras [3] = {"casa","carro","moto"};
@@ -38,24 +45,40 @@ void joga_sozinho(){
 
     int tentativas = 0, maxTentativas = 5;
     char letra;
+    string letras_arriscadas;
+
 
     while(palavra_mascara != palavra && maxTentativas - tentativas > 0) {
+
         limparTela();
 
-        exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas);
+        exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas,letras_arriscadas);
 
         cout << "\n\nDigite uma letra: ";
         cin >> letra;
+
+        bool ja_tentou = false;
+
+        for(int i = 0; i < tentativas; i++){
+            if(letras_arriscadas[i] == letra) {
+                cout << "\nLetra ja digitada\n";
+                ja_tentou = true;
+            }
+        }
+
+        if(ja_tentou == false) {
+
+        letras_arriscadas += letra;
 
         for(int i = 0; i < tamanho_palavra; i++){
 
             if(palavra[i] == letra){
                 palavra_mascara[i] = letra;
             }
-
+        }
+        tentativas ++;
         }
 
-        tentativas ++;
     }
 
     if(palavra_mascara == palavra) {
@@ -65,7 +88,6 @@ void joga_sozinho(){
         limparTela();
         cout << "Voce perdeu! \n";
     }
-
 }
 
 void menuInicial() {
