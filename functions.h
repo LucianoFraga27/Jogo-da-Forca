@@ -2,7 +2,12 @@
 void limparTela() {
     system("cls");
 }
+void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes) {
 
+    cout << "Palavra: " << palavra_mascara << " \nTamanho: " << tamanho_palavra;
+    cout << "\nTentativas restantes: " << tentativasRestantes;
+
+        }
 string retornaPalavraAleatoria() {
 
     string palavras [3] = {"casa","carro","moto"};
@@ -17,7 +22,7 @@ string RetornaPalavraMascara(string palavra, int tamanho_palavra) {
     string palavra_mascara;
 
     for(int i = 0; i < tamanho_palavra; i++){
-        palavra_mascara += "_ ";
+        palavra_mascara += "_";
     }
 
     return palavra_mascara;
@@ -31,8 +36,19 @@ void joga_sozinho(){
 
     string palavra_mascara = RetornaPalavraMascara(palavra,tamanho_palavra);
 
-    cout << palavra_mascara;
+    int tentativas = 0, maxTentativas = 5;
+    char letra;
 
+    while(maxTentativas - tentativas > 0) {
+        limparTela();
+
+        exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas);
+
+        cout << "\n\nDigite uma letra: ";
+        cin >> letra;
+
+        tentativas ++;
+    }
 }
 
 void menuInicial() {
