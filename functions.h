@@ -39,7 +39,7 @@ void joga_sozinho(){
     int tentativas = 0, maxTentativas = 5;
     char letra;
 
-    while(maxTentativas - tentativas > 0) {
+    while(palavra_mascara != palavra && maxTentativas - tentativas > 0) {
         limparTela();
 
         exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas);
@@ -47,8 +47,25 @@ void joga_sozinho(){
         cout << "\n\nDigite uma letra: ";
         cin >> letra;
 
+        for(int i = 0; i < tamanho_palavra; i++){
+
+            if(palavra[i] == letra){
+                palavra_mascara[i] = letra;
+            }
+
+        }
+
         tentativas ++;
     }
+
+    if(palavra_mascara == palavra) {
+        limparTela();
+        cout << "Voce venceu \n";
+    } else {
+        limparTela();
+        cout << "Voce perdeu! \n";
+    }
+
 }
 
 void menuInicial() {
