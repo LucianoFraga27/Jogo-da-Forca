@@ -3,6 +3,23 @@ void limparTela() {
     system("cls");
 }
 
+string retornaPalavraAleatoria() {
+
+    string palavras [3] = {"casa","carro","moto"};
+
+    int indice_aleatorio = rand() % 3;
+
+    return palavras[indice_aleatorio];
+}
+
+void joga_sozinho(){
+
+    string palavra = retornaPalavraAleatoria();
+
+    cout << palavra << "\n";
+
+}
+
 void menuInicial() {
     int opcao = 0;
     while (opcao < 1 || opcao > 3) {
@@ -19,6 +36,7 @@ void menuInicial() {
         case 1:
             limparTela();
             cout << "Jogo iniciado! \n";
+            joga_sozinho();
             break;
         case 2:
             limparTela();
@@ -31,3 +49,4 @@ void menuInicial() {
         }
     }
 }
+
