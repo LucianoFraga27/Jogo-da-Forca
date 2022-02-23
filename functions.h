@@ -1,5 +1,5 @@
-
 void limparTela() {
+
     system("cls");
 }
 void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes,string letras_arriscadas,string mensagem) {
@@ -8,11 +8,11 @@ void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRe
     cout << "Palavra: " << palavra_mascara << " \nTamanho: " << tamanho_palavra;
     cout << "\nTentativas restantes: " << tentativasRestantes;
     cout << "\nLetras arriscadas: ";
-    for(int i = 0; i < letras_arriscadas.size();i++){
-    cout << letras_arriscadas[i] << ", ";
-    }
-}
 
+        for(int i = 0; i < letras_arriscadas.size();i++){
+            cout << letras_arriscadas[i] << ", ";
+        }
+}
 
 string retornaPalavraAleatoria() {
 
@@ -30,7 +30,6 @@ string RetornaPalavraMascara(string palavra, int tamanho_palavra) {
     for(int i = 0; i < tamanho_palavra; i++){
         palavra_mascara += "_";
     }
-
     return palavra_mascara;
 }
 
@@ -47,8 +46,6 @@ int joga_sozinho(){
     string letras_arriscadas;
     string mensagem = "";
 
-
-
     while(palavra_mascara != palavra && maxTentativas - tentativas > 0) {
 
         limparTela();
@@ -56,6 +53,7 @@ int joga_sozinho(){
         exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas,letras_arriscadas,mensagem);
 
         cout << "\n\nDigite uma letra: ";
+
         cin >> letra;
 
         bool ja_tentou = false;
@@ -66,7 +64,6 @@ int joga_sozinho(){
                 ja_tentou = true;
             }
         }
-
         if(ja_tentou == false) {
 
         letras_arriscadas += tolower(letra);
@@ -80,30 +77,35 @@ int joga_sozinho(){
         }
         tentativas ++;
         }
-
     }
     int opcao_final;
 
     if(palavra_mascara == palavra) {
+
         limparTela();
+
         cout << "------------ \n";
         cout << "Voce venceu \n";
         cout << "------------ \n\n";
-
         cout <<"Deseja reiniciar o jogo? \n";
         cout <<"1 - Sim \n";
         cout <<"0 - Não \n";
+
         cin >> opcao_final;
+
         return opcao_final;
+
     } else {
+
         limparTela();
+
         cout << "------------ \n";
         cout << "Voce perdeu! \n";
         cout << "------------ \n\n";
-
         cout <<"Deseja reiniciar o jogo? \n";
         cout <<"1 - Sim \n";
         cout <<"0 - Não \n";
+
         cin >> opcao_final;
 
         cout << "\n\n\nSaindo....\n\n\n";
@@ -112,10 +114,21 @@ int joga_sozinho(){
     }
 }
 
+void info_jogo() {
+
+    cout << "Jogo da Forca\n";
+    cout << "Desenvolvido por: Luciano Fraga\n";
+    cout << "\nObjetivo do jogo:\nO jogo da forca é um jogo em que o jogador tem que acertar \nqual é a palavra proposta, tendo como dica o número de letras\n";
+}
+
 void menuInicial() {
+
     int opcao = 0;
+
     while (opcao < 1 || opcao > 3) {
+
         limparTela();
+
         cout << "Bem vindo ao jogo da forca!\n";
         cout << "1 - Jogar\n";
         cout << "2 - Sobre\n";
@@ -125,6 +138,7 @@ void menuInicial() {
         cin >> opcao;
 
         switch (opcao) {
+
         case 1:
             limparTela();
             cout << "Jogo iniciado! \n";
@@ -132,10 +146,27 @@ void menuInicial() {
                 menuInicial();
             }
             break;
+
         case 2:
             limparTela();
+
             cout << "Sobre o jogo: \n";
+
+            info_jogo();
+
+            cout << "\n\n";
+            cout << "1 - Voltar\n";
+            cout << "3 - Sair\n";
+
+            cin >> opcao;
+
+            if(opcao == 1){
+                menuInicial();
+            } else {
+                cout << "\n\nSaindo...\n\n";
+            }
             break;
+
         case 3:
             limparTela();
             cout << "Saindo... \n";
