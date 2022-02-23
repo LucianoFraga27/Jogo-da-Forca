@@ -1,2 +1,2 @@
 # Jogo da Forca
- Jogo da forca em c++
+ Jogo da forca desenvolvido em c++
