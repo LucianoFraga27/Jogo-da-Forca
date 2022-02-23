@@ -11,8 +11,7 @@ void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRe
     for(int i = 0; i < letras_arriscadas.size();i++){
     cout << letras_arriscadas[i] << ", ";
     }
-
-    }
+}
 
 
 string retornaPalavraAleatoria() {
@@ -35,7 +34,7 @@ string RetornaPalavraMascara(string palavra, int tamanho_palavra) {
     return palavra_mascara;
 }
 
-void joga_sozinho(){
+int joga_sozinho(){
 
     string palavra = retornaPalavraAleatoria();
 
@@ -43,7 +42,7 @@ void joga_sozinho(){
 
     string palavra_mascara = RetornaPalavraMascara(palavra,tamanho_palavra);
 
-    int tentativas = 0, maxTentativas = 5;
+    int tentativas = 0, maxTentativas = 10;
     char letra;
     string letras_arriscadas;
     string mensagem = "";
@@ -83,13 +82,33 @@ void joga_sozinho(){
         }
 
     }
+    int opcao_final;
 
     if(palavra_mascara == palavra) {
         limparTela();
+        cout << "------------ \n";
         cout << "Voce venceu \n";
+        cout << "------------ \n\n";
+
+        cout <<"Deseja reiniciar o jogo? \n";
+        cout <<"1 - Sim \n";
+        cout <<"0 - Não \n";
+        cin >> opcao_final;
+        return opcao_final;
     } else {
         limparTela();
+        cout << "------------ \n";
         cout << "Voce perdeu! \n";
+        cout << "------------ \n\n";
+
+        cout <<"Deseja reiniciar o jogo? \n";
+        cout <<"1 - Sim \n";
+        cout <<"0 - Não \n";
+        cin >> opcao_final;
+
+        cout << "\n\n\nSaindo....\n\n\n";
+
+        return opcao_final;
     }
 }
 
@@ -109,7 +128,9 @@ void menuInicial() {
         case 1:
             limparTela();
             cout << "Jogo iniciado! \n";
-            joga_sozinho();
+            if(joga_sozinho() == 1){
+                menuInicial();
+            }
             break;
         case 2:
             limparTela();
