@@ -2,11 +2,11 @@
 void limparTela() {
     system("cls");
 }
-void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes,string letras_arriscadas) {
+void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes,string letras_arriscadas,string mensagem) {
 
+    cout << mensagem << "\n";
     cout << "Palavra: " << palavra_mascara << " \nTamanho: " << tamanho_palavra;
     cout << "\nTentativas restantes: " << tentativasRestantes;
-
     cout << "\nLetras arriscadas: ";
     for(int i = 0; i < letras_arriscadas.size();i++){
     cout << letras_arriscadas[i] << ", ";
@@ -46,13 +46,15 @@ void joga_sozinho(){
     int tentativas = 0, maxTentativas = 5;
     char letra;
     string letras_arriscadas;
+    string mensagem = "";
+
 
 
     while(palavra_mascara != palavra && maxTentativas - tentativas > 0) {
 
         limparTela();
 
-        exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas,letras_arriscadas);
+        exibe_status(palavra_mascara,tamanho_palavra,maxTentativas-tentativas,letras_arriscadas,mensagem);
 
         cout << "\n\nDigite uma letra: ";
         cin >> letra;
@@ -61,7 +63,7 @@ void joga_sozinho(){
 
         for(int i = 0; i < tentativas; i++){
             if(letras_arriscadas[i] == letra) {
-                cout << "\nLetra ja digitada\n";
+                mensagem = "\nLetra ja digitada\n";
                 ja_tentou = true;
             }
         }
@@ -74,6 +76,7 @@ void joga_sozinho(){
 
             if(palavra[i] == letra){
                 palavra_mascara[i] = letra;
+                mensagem = "\nAcertou uma letra!\n";
             }
         }
         tentativas ++;
