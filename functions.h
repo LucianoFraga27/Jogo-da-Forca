@@ -12,11 +12,26 @@ string retornaPalavraAleatoria() {
     return palavras[indice_aleatorio];
 }
 
+string RetornaPalavraMascara(string palavra, int tamanho_palavra) {
+
+    string palavra_mascara;
+
+    for(int i = 0; i < tamanho_palavra; i++){
+        palavra_mascara += "_ ";
+    }
+
+    return palavra_mascara;
+}
+
 void joga_sozinho(){
 
     string palavra = retornaPalavraAleatoria();
 
-    cout << palavra << "\n";
+    int tamanho_palavra = palavra.size();
+
+    string palavra_mascara = RetornaPalavraMascara(palavra,tamanho_palavra);
+
+    cout << palavra_mascara;
 
 }
 
