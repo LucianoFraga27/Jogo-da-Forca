@@ -2,6 +2,7 @@ void limparTela() {
 
     system("cls");
 }
+
 void exibe_status (string palavra_mascara, int tamanho_palavra, int tentativasRestantes,string letras_arriscadas,string mensagem) {
 
     cout << mensagem << "\n";
@@ -33,9 +34,19 @@ string RetornaPalavraMascara(string palavra, int tamanho_palavra) {
     return palavra_mascara;
 }
 
-int joga_sozinho(){
+int jogar(int numero_de_jogadores){
 
-    string palavra = retornaPalavraAleatoria();
+    string palavra;
+
+    if(numero_de_jogadores == 1) {
+
+       palavra = retornaPalavraAleatoria();
+
+    } else {
+
+        cout << "Digite a palavra: ";
+        cin >> palavra;
+    }
 
     int tamanho_palavra = palavra.size();
 
@@ -112,6 +123,7 @@ int joga_sozinho(){
 
         return opcao_final;
     }
+
 }
 
 void info_jogo() {
@@ -132,7 +144,8 @@ void menuInicial() {
         cout << "Bem vindo ao jogo da forca!\n";
         cout << "1 - Jogar\n";
         cout << "2 - Sobre\n";
-        cout << "3 - Sair\n";
+        cout << "3 - Jogar em dupla\n";
+        cout << "4 - Sair\n";
         cout << "Escolha uma opção: ";
 
         cin >> opcao;
@@ -142,7 +155,7 @@ void menuInicial() {
         case 1:
             limparTela();
             cout << "Jogo iniciado! \n";
-            if(joga_sozinho() == 1){
+            if(jogar(1) == 1){
                 menuInicial();
             }
             break;
@@ -156,7 +169,7 @@ void menuInicial() {
 
             cout << "\n\n";
             cout << "1 - Voltar\n";
-            cout << "3 - Sair\n";
+            cout << "0 - Sair\n";
 
             cin >> opcao;
 
@@ -169,9 +182,18 @@ void menuInicial() {
 
         case 3:
             limparTela();
+            cout << "Jogo em dupla! \n";
+            if(jogar(2) == 1){
+                menuInicial();
+            }
+
+
+        case 4:
+            limparTela();
             cout << "Saindo... \n";
             break;
         }
+
     }
 }
 
