@@ -69,12 +69,12 @@ int joga_sozinho(){
 
         if(ja_tentou == false) {
 
-        letras_arriscadas += letra;
+        letras_arriscadas += tolower(letra);
 
         for(int i = 0; i < tamanho_palavra; i++){
 
-            if(palavra[i] == letra){
-                palavra_mascara[i] = letra;
+            if(palavra[i] == tolower(letra)){
+                palavra_mascara[i] = tolower(letra);
                 mensagem = "\nAcertou uma letra!\n";
             }
         }

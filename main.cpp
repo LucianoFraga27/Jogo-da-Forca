@@ -1,7 +1,5 @@
 #include<iostream>
 #include<string>
-#include<stdlib.h>
-#include<new>
 #include<locale.h>
 #include<time.h>
 
